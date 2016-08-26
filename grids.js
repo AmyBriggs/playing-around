@@ -1,77 +1,81 @@
 $(document).ready(function() {
-    console.log("DOM fully loaded and parsed");
+    'use strict'
+    console.log("DOM fully loaded and parsed,grids is connected");
+    console.log('grids is connected');
+
+var col1 = $('div.square.One')
+    $('#play').click(function() {
+      $(col1).css('background-color', 'red')
+      sounds.sound0.play();
+      sounds.sound1.play();
+      sounds.sound2.play();
+      sounds.sound3.play();
+      sounds.sound4.play();
+  });
+
+
+
+
+
+
 
 
     var sounds = {
-      sound0: new Howl({
-        urls: ['sounds/bubbles.mp3']
-      }),
-      sound1: new Howl({
-        urls: ['sounds/clay.mp3']
-      }),
-      sound2: new Howl({
-        urls: ['sounds/confetti.mp3']
-      }),
-      sound3: new Howl({
-        urls: ['sounds/corona.mp3']
-      }),
-      sound4: new Howl({
-        urls: ['sounds/dotted-spiral.mp3']
-      }),
-      sound5: new Howl({
-        urls: ['sounds/flash-1.mp3']
-      }),
-      sound6: new Howl({
-        urls: ['sounds/moon.mp3']
-      }),
-      sound7: new Howl({
-        urls: ['sounds/pinwheel.mp3']
-      })
+        sound0: new Howl({
+            urls: ['acoustic_grand_piano-mp3/E4.mp3'],
+        }),
+        sound1: new Howl({
+            urls: ['acoustic_grand_piano-mp3/Gb4.mp3']
+        }),
+        sound2: new Howl({
+            urls: ['acoustic_grand_piano-mp3/B4.mp3']
+        }),
+        sound3: new Howl({
+            urls: ['acoustic_grand_piano-mp3/Db5.mp3']
+        }),
+        sound4: new Howl({
+            urls: ['acoustic_grand_piano-mp3/D5.mp3']
+        }),
+
     }
 
-    $('#0, #8, #16').click(function() {
+    $('.4').click(function() {
         this.style.backgroundColor = '#b23232'
         sounds.sound0.play();
     });
 
-    $("#1, #9, #17").click(function() {
-      this.style.backgroundColor = '#ff6c6c'
+    $(".3").click(function() {
+        this.style.backgroundColor = '#ff6c6c'
         sounds.sound1.play();
     });
 
-    $("#2, #10, #18").click(function() {
+    $(".2").click(function() {
         this.style.backgroundColor = '#fff748'
         sounds.sound2.play();
     });
 
-    $("#3, #11, #19").click(function() {
+    $(".1").click(function() {
         this.style.backgroundColor = '#39cc4b'
         sounds.sound3.play();
     });
-    $("#4, #12, #20").click(function() {
+    $(".0").click(function() {
         this.style.backgroundColor = '#3248b2'
         sounds.sound4.play();
     });
-    $("#5, #13, #21").click(function() {
-        this.style.backgroundColor = '#6432b2'
-        sounds.sound5.play();
-    });
-    $("#6, #14, #22").click(function() {
-        this.style.backgroundColor = '#bb91ff'
-        sounds.sound6.play();
-    });
-    $("#7, #15, #23").click(function() {
-        this.style.backgroundColor = '#ff6c6c'
-        sounds.sound7.play();
-    });
 
 
 
 
 
-
-
-
+    // function playSound(){
+    //   sound: new Howl({
+    //     urls: ['sounds/piano-f#.mp3'],
+    //   }
+    // })
+    //
+    // $('#sound').click() {
+    //   sound
+    // }(function)
 
 
 
