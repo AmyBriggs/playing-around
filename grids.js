@@ -3,21 +3,44 @@ $(document).ready(function() {
     console.log("DOM fully loaded and parsed,grids is connected");
     console.log('grids is connected');
 
-var col1 = $('div.square.One')
-    $('#play').click(function() {
-      $(col1).css('background-color', 'red')
-      sounds.sound0.play();
-      sounds.sound1.play();
-      sounds.sound2.play();
-      sounds.sound3.play();
-      sounds.sound4.play();
-  });
 
 
+    var col1 = $('div.square.One')
+    var col2 = $('div.square.Two')
+    var col3 = $('div.square.Three')
+    var col4 = $('div.square.Four')
+    var col5 = $('div.square.Five')
+    var col6 = $('div.square.Six')
+    var col7 = $('div.square.Seven')
+    var col8 = $('div.square.Eight')
+    var col9 = $('div.square.Nine')
+    var col10 = $('div.square.Ten')
+    var col11 = $('div.square.Eleven')
+    var col12 = $('div.square.Twelve')
+
+    var cols = [col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12]
+
+    var interval = setInterval(playCol, 2000)
+
+    var playCol = function() {
+      for (var i = 0; i < cols.length; i++) {
+        setInterval(function() {
+          sounds.sound0.play();
+          sounds.sound1.play();
+          sounds.sound2.play();
+          sounds.sound3.play();
+          sounds.sound4.play();
+          console.log('hi');
+        }, 2000)
+      }
+    }
+
+    playCol()
 
 
-
-
+    $('#stop').click(function() {
+        clearInterval()
+    })
 
 
     var sounds = {
@@ -67,67 +90,8 @@ var col1 = $('div.square.One')
 
 
 
-    // function playSound(){
-    //   sound: new Howl({
-    //     urls: ['sounds/piano-f#.mp3'],
-    //   }
-    // })
-    //
-    // $('#sound').click() {
-    //   sound
-    // }(function)
 
 
-
-    // var data = {
-    //     sound: new Howl({
-    //             urls: ['A/bubbles.mp3']
-    //         })
-    //
-    //
-    //         let body = document.querySelector('body');
-    //         let table = document.createElement('div');
-    //
-    //
-    //
-    //         body.appendChild(table); table.className = "table";
-    //
-    //
-    //
-    //         function makeCell() {
-    //             let br = document.createElement('br');
-    //             var i = 0;
-    //             while (i <= 2) {
-    //                 var cell = document.createElement('div');
-    //                 cell.addEventListener("click", function() {
-    //                     console.log('hi');
-    //                     sound: new Howl({
-    //                         src: ['A/bubbles.mp3']
-    //                     });
-    //                     sound.play();
-    //                 });
-    //                 cell.className = "cell";
-    //                 table.appendChild(cell);
-    //                 i++;
-    //             }
-    //             console.log(table);
-    //
-    //             table.appendChild(br);
-    //         }
-    //         for (var i = 0; i <= 2; i++) {
-    //             makeCell();
-    //
-    //         }
-    //
-    //
-    //         console.log(table);
-    //
-    //
-    //
-    //
-    //         console.log(table); console.log(cell);
-    //
-    //
 
 
 });
