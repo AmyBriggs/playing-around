@@ -34,13 +34,14 @@ h3 {
 
 }
 .square {
-  border: solid black 1px;
+  border: solid dodgerblue 1px;
   height: 30px;
   width: 30px;
   display: inline-block;
   background-color: white;
-  margin-bottom: -5px;
-  margin-left: -2px;
+  margin-bottom: -4px;
+  margin-left: -3px;
+  border-radius: 4px;
 }
 .rainbow {
 
