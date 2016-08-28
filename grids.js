@@ -24,9 +24,11 @@ $(document).ready(function() {
     var sound4
 
     var lastDrawTime
+    var aheadTime = 0.200
 
     var rec
     var gain
+    var timeoutId
 
     var SCConnected = false
 
@@ -107,19 +109,21 @@ $(document).ready(function() {
     // 'active' or 'playing' classes to the grid/columns
 
     $('#play').click(function(){
-      $('.square.column_1.pitch5').addClass('active')
-      $('.square.column_1.pitch1').addClass('active')
-      if($('.square.column_1.pitch5').hasClass('active')){
-        $('.square.column_1.pitch5').css('background-color', 'pink')
-        sounds.sound4.play()
-      } if($('.square.column_1.pitch1').hasClass('active')){
-        $('.square.column_1.pitch1').css('background-color', 'pink')
-        sounds.sound0.play()
-        $(col12).removeClass('active')
-        if(!$(col12).hasClass('active')){
-            $(col12).css('background-color', 'white')
-        }
-      }
+      startPlay()
+
+      // $('.square.column_1.pitch5').addClass('active')
+      // $('.square.column_1.pitch1').addClass('active')
+      // if($('.square.column_1.pitch5').hasClass('active')){
+      //   $('.square.column_1.pitch5').css('background-color', 'pink')
+      //   sounds.sound4.play()
+      // } if($('.square.column_1.pitch1').hasClass('active')){
+      //   $('.square.column_1.pitch1').css('background-color', 'pink')
+      //   sounds.sound0.play()
+      //   $(col12).removeClass('active')
+      //   if(!$(col12).hasClass('active')){
+      //       $(col12).css('background-color', 'white')
+      //   }
+
 
       // $(col1).addClass('active')
       // if($(col1).hasClass('active')){
@@ -136,24 +140,26 @@ $(document).ready(function() {
     })
 
     $('#stop').click(function(){
-      $(col1).removeClass('active')
-      if(!$(col1).hasClass('active')){
-          $(col1).css('background-color', 'white')
-      }
-      $('.square.column_12.pitch4').addClass('active')
-      $('.square.column_12.pitch3').addClass('active')
-      $('.square.column_12.pitch2').addClass('active')
-      if($('.square.column_12.pitch4').hasClass('active')){
-        // $(col12).css('background-color', 'blue')
-        $('.square.column_12.pitch4').css('background-color', 'blue')
-        sounds.sound3.play()
-      } if($('.square.column_12.pitch3').hasClass('active')){
-        $('.square.column_12.pitch3').css('background-color', 'blue')
-        sounds.sound2.play()
-      } if($('.square.column_12.pitch2').hasClass('active')) {
-          $('.square.column_12.pitch2').css('background-color', 'blue')
-          sounds.sound1.play()
-      }
+      stopPlay()
+      // $(col1).removeClass('active')
+      // if(!$(col1).hasClass('active')){
+      //     $(col1).css('background-color', 'white')
+      // }
+      // $('.square.column_12.pitch4').addClass('active')
+      // $('.square.column_12.pitch3').addClass('active')
+      // $('.square.column_12.pitch2').addClass('active')
+      // if($('.square.column_12.pitch4').hasClass('active')){
+      //   // $(col12).css('background-color', 'blue')
+      //   $('.square.column_12.pitch4').css('background-color', 'blue')
+      //   sounds.sound3.play()
+      // } if($('.square.column_12.pitch3').hasClass('active')){
+      //   $('.square.column_12.pitch3').css('background-color', 'blue')
+      //   sounds.sound2.play()
+      // } if($('.square.column_12.pitch2').hasClass('active')) {
+      //     $('.square.column_12.pitch2').css('background-color', 'blue')
+      //     sounds.sound1.play()
+      // }
+      // $('.square.column_12.pitch4').addClass('active')
         // sounds.sound1.play()
         // sounds.sound2.play()
         // sounds.sound3.play()
@@ -170,11 +176,13 @@ $(document).ready(function() {
     // Setting up the AudioContext
 
 
-    // var context = new AudioContext();
-    // // context = new AudioContext();
+    context = new AudioContext();
+    console.log(context.currentTime);
+    gain = context.createGain();
+    gain.connect(context.destination);
+
+
     // // context.number
-    // gain = context.createGain();
-    // gain.connect(context.destination);
     //
     //
     // function playSound(sample){
@@ -188,97 +196,102 @@ $(document).ready(function() {
     //
     //
     //
-    // function startPlay(event) {
-    //     playIndex = 0;
-    //     noteTime = 0.0;
-    //     // startTime = context.currentTime + 0.005;
-    //     startTime = context.currentTime;
-    //     schedule();
-    // }
+    function startPlay() {
+        playIndex = 0;
+        noteTime = 0.0;
+        startTime = context.currentTime + aheadTime;
+        // startTime = context.currentTime;
+        schedule();
+
+    }
     //
     // startPlay()
     //
-    // function stopPlay(event) {
-    //     cancelAnimationFrame(timeoutId);
-    //     $(".square").removeClass("playing");
-    // }
+    function stopPlay(event) {
+        cancelAnimationFrame(timeoutId);
+        $(".square").removeClass("playing");
+    }
     //
-    // function schedule() {
-    //     var currentTime = context.currentTime;
-    //     currentTime -= startTime;
-    //     while (noteTime < currentTime + 0.200) {
-    //         var contextPlayTime = noteTime + startTime;
-    //         var $currentSquares = $(".column_" + playIndex);
-    //         $currentSquares.each(function() {
-    //             if ($(this).hasClass("active") && $(this).hasClass("pitch1")) {
-    //                 sounds.sound0.play();
-    //             }
-    //             if ($(this).hasClass("active") && $(this).hasClass("pitch2")) {
-    //                 sounds.sound1.play();
-    //             }
-    //             if ($(this).hasClass("active") && $(this).hasClass("pitch3")) {
-    //                 sounds.sound2.play();
-    //             }
-    //             if ($(this).hasClass("active") && $(this).hasClass("pitch4")) {
-    //                 sounds.sound3.play();
-    //             }
-    //             if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
-    //                 sounds.sound4.play();
-    //             }
+    function schedule() {
+        var currentTime = context.currentTime;
+        currentTime -= startTime;
+        while (noteTime < currentTime + aheadTime) {
+            var contextPlayTime = noteTime + startTime;
+            var $currentSquares = $(".column_" + playIndex);
+            $currentSquares.each(function() {
+                if ($(this).hasClass("active") && $(this).hasClass("pitch1")) {
+                    sounds.sound0.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch2")) {
+                    sounds.sound1.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch3")) {
+                    sounds.sound2.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch4")) {
+                    sounds.sound3.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
+                    sounds.sound4.play();
+                }
+
+            })
+            // if (noteTime != lastDrawTime) {
+            //     lastDrawTime = noteTime;
+                drawPlayhead(playIndex);
+            // }
+            advanceNote();
+        }
+        timeoutId = requestAnimationFrame(schedule)
+    }
     //
-    //         })
-    //         if (noteTime != lastDrawTime) {
-    //             lastDrawTime = noteTime;
-    //             drawPlayhead(playIndex);
-    //         }
-    //         advanceNote();
-    //     }
-    //     var timeoutId = requestAnimationFrame(schedule)
-    // }
+    function drawPlayhead(xindex) {
+        var lastIndex = (xindex + loop_length - 1) % loop_length;
+        var $newRows = $('.column_' + xindex);
+        var $oldRows = $('.column_' + lastIndex);
+
+        $newRows.addClass("playing");
+        $oldRows.removeClass("playing");
+    }
     //
-    // function drawPlayhead(xindex) {
-    //     var lastIndex = (xindex + loop_length - 1) % loop_length;
-    //     var $newRows = $('.column_' + xindex);
-    //     var $oldRows = $('.column_' + lastIndex);
-    //
-    //     $newRows.addClass("playing");
-    //     $oldRows.removeClass("playing");
-    // }
-    //
-    // function advanceNote() {
-    //     var secondsPerBeat = 60.0 / bpm;
-    //     playIndex++;
-    //     if (playIndex == loop_length) {
-    //         playIndex = 0;
-    //     }
-    //     //0.25 because each square is a 16th note
-    //     noteTime += 0.25 * secondsPerBeat
-    // }
+    function advanceNote() {
+        var secondsPerBeat = 45.0 / bpm;
+        playIndex++;
+        if (playIndex == loop_length) {
+            playIndex = 0;
+        }
+        //0.25 because each square is a 16th note
+        noteTime += 0.25 * secondsPerBeat
+        console.log(secondsPerBeat);
+    }
+
+
+    function reset(){
+       $('.square').removeClass('active');
+     }
+
+     $('#reset').click(function(){
+       reset();
+     });
+
+     var squares = document.getElementsByClassName('square');
+
+     for (var i = 0; i < squares.length; i++) {
+       squares[i].addEventListener('click', function(event){
+       // console.log(event.target);
+         if(this.classList.contains('active')){
+           this.classList.remove('active');
+         } else {
+           this.classList.add('active')
+         }
+       })
+     };
+
+     console.log(col12);
 
 
 
 
-    // var interval = setInterval(playCol, 2000)
-
-    // var playCol = function() {
-    //   for (var i = 0; i < cols.length; i++) {
-    //     setInterval(function() {
-    //       sounds.sound0.play();
-    //       sounds.sound1.play();
-    //       sounds.sound2.play();
-    //       sounds.sound3.play();
-    //       sounds.sound4.play();
-    //       console.log('hi');
-    //     }, 2000)
-    //   }
-    // }
-    //
-    // playCol()
-    //
-    //
-    // $('#stop').click(function() {
-    //     clearInterval(playCol)
-    // })
 
 
 
