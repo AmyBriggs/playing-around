@@ -1,9 +1,25 @@
 body {
   text-align: center;
+  background-color: dodgerblue;
 }
 
 .table {
   border-collapse: collapse;
+}
+
+.container {
+  margin-top: 10%;
+}
+
+.button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 div {
@@ -11,51 +27,27 @@ div {
 }
 
 h1 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 48px;
-  font-weight: 600;
-  display: inline;
-  text-align: center;
-  margin-left: 20%;
+
 }
 
 h3 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 36px;
-  font-weight: 600;
-  display: inline;
-  float: right;
-  margin-right: 10%;
+
 }
 .square {
   border: solid black 1px;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   display: inline-block;
   background-color: white;
   margin-bottom: -5px;
   margin-left: -2px;
 }
 .rainbow {
-  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
-  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
-  color:transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+
 }
 
 .table {
   margin-top: 5%;
   border-collapse: collapse;
   text-align: center;
-}
-
-.pallette {
-  border: solid black 1px;
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  border-radius: 50%;
-  float: bottom;
-  margin-top: 5%;
 }
