@@ -3,7 +3,7 @@ $(document).ready(function() {
     console.log("DOM fully loaded and parsed,grids is connected");
     console.log('grids is connected');
 
-// Define some of the variables used in functions
+    // Define some of the variables used in functions
 
     var bpm = 60
     var volume
@@ -60,67 +60,67 @@ $(document).ready(function() {
     // Define the sounds object here
 
     var sounds = {
-      sound0: new Howl({
-        urls: ['acoustic_grand_piano-mp3/E4.mp3'],
-      }),
-      sound1: new Howl({
-        urls: ['acoustic_grand_piano-mp3/Gb4.mp3']
-      }),
-      sound2: new Howl({
-        urls: ['acoustic_grand_piano-mp3/B4.mp3']
-      }),
-      sound3: new Howl({
-        urls: ['acoustic_grand_piano-mp3/Db5.mp3']
-      }),
-      sound4: new Howl({
-        urls: ['acoustic_grand_piano-mp3/D5.mp3']
-      }),
+        sound0: new Howl({
+            urls: ['acoustic_grand_piano-mp3/E4.mp3'],
+        }),
+        sound1: new Howl({
+            urls: ['acoustic_grand_piano-mp3/Gb4.mp3']
+        }),
+        sound2: new Howl({
+            urls: ['acoustic_grand_piano-mp3/B4.mp3']
+        }),
+        sound3: new Howl({
+            urls: ['acoustic_grand_piano-mp3/Db5.mp3']
+        }),
+        sound4: new Howl({
+            urls: ['acoustic_grand_piano-mp3/D5.mp3']
+        }),
     }
 
     // Experimenting with click listeners on squares
 
 
     $(".pitch1").click(function() {
-      this.style.backgroundColor = '#b23232'
+        this.style.backgroundColor = '#000099'
 
     });
 
     $(".pitch2").click(function() {
-      this.style.backgroundColor = '#ff6c6c'
+        this.style.backgroundColor = '#005ce6'
 
     });
 
     $(".pitch3").click(function() {
-      this.style.backgroundColor = '#fff748'
+        this.style.backgroundColor = '#bf00ff'
 
     });
 
     $(".pitch4").click(function() {
-      this.style.backgroundColor = '#39cc4b'
+        this.style.backgroundColor = '#d580ff'
 
     });
     $(".pitch5").click(function() {
-      this.style.backgroundColor = '#3248b2'
+        this.style.backgroundColor = '#4dffd2'
 
     });
 
     // add event handlers for buttons here, to experiment with adding/removing
     // 'active' or 'playing' classes to the grid/columns
 
-    $('#play').click(function(){
-      startPlay()
+    $('#play').click(function() {
+        startPlay()
 
 
-      console.log(col1);
-      console.log(col12);
+        console.log(col1);
+        console.log(col12);
     })
 
-    $('#stop').click(function(){
-      stopPlay()
+    $('#stop').click(function() {
+        stopPlay()
 
-      })
-      console.log(col1);
-      console.log(col12);
+    })
+    console.log(col1);
+    console.log(col12);
 
 
 
@@ -159,26 +159,26 @@ $(document).ready(function() {
             var contextPlayTime = noteTime + startTime;
             var $currentSquares = $(".column_" + playIndex);
             $currentSquares.each(function() {
-                if ($(this).hasClass("active") && $(this).hasClass("pitch1")) {
-                    sounds.sound0.play();
-                }
-                if ($(this).hasClass("active") && $(this).hasClass("pitch2")) {
-                    sounds.sound1.play();
-                }
-                if ($(this).hasClass("active") && $(this).hasClass("pitch3")) {
-                    sounds.sound2.play();
-                }
-                if ($(this).hasClass("active") && $(this).hasClass("pitch4")) {
-                    sounds.sound3.play();
-                }
-                if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
-                    sounds.sound4.play();
-                }
+                    if ($(this).hasClass("active") && $(this).hasClass("pitch1")) {
+                        sounds.sound0.play();
+                    }
+                    if ($(this).hasClass("active") && $(this).hasClass("pitch2")) {
+                        sounds.sound1.play();
+                    }
+                    if ($(this).hasClass("active") && $(this).hasClass("pitch3")) {
+                        sounds.sound2.play();
+                    }
+                    if ($(this).hasClass("active") && $(this).hasClass("pitch4")) {
+                        sounds.sound3.play();
+                    }
+                    if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
+                        sounds.sound4.play();
+                    }
 
-            })
-            // if (noteTime != lastDrawTime) {
-            //     lastDrawTime = noteTime;
-                drawPlayhead(playIndex);
+                })
+                // if (noteTime != lastDrawTime) {
+                //     lastDrawTime = noteTime;
+            drawPlayhead(playIndex);
             // }
             advanceNote();
         }
@@ -211,34 +211,97 @@ $(document).ready(function() {
     //    location.reload;
     //  }
 
-     $('#reset').click(function(){
-       location.reload();
-      //  reset();
-     });
+    $('#reset').click(function() {
+        location.reload();
+        //  reset();
+    });
 
-     var squares = document.getElementsByClassName('square');
+    var squares = document.getElementsByClassName('square');
 
-     for (var i = 0; i < squares.length; i++) {
-       squares[i].addEventListener('click', function(event){
-       // console.log(event.target);
-         if(this.classList.contains('active')){
-           this.classList.remove('active');
-         } else {
-           this.classList.add('active')
-         }
-       })
-     };
-
-     console.log(col12);
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].addEventListener('click', function(event) {
+            // console.log(event.target);
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+            } else {
+                this.classList.add('active')
+            }
+        })
+    };
 
 
+    //  Make event listeners for local storage
+
+    function localStorageSupported() {
+        try {
+            return "localStorage" in window && window["localStorage"] !== null;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    if (localStorageSupported('localStorage')) {
+      console.log('yes');
+        // Yippee! We can use localStorage awesomeness
+    } else {
+      console.log('no');
+        // Too bad, no localStorage for us
+    }
+
+
+    function savePitchTrack(pitchTrack) {
+        if (!currentState[pitchTrack]) {
+            console.log('adding value');
+            currentState[pitchTrack] = [];
+        }
+        var array = $('#' + pitchTrack).children('.square');
+        for (var i = 0; i < array.length; i++) {
+            currentState[name][i] = $(array[i]).hasClass('active');
+        }
+
+    }
 
 
 
+    function loadPitch(pitchTrack) {
+        if (!currentState[pitchTrack]) return;
+        var array = $('#' + pitchTrack).children('.square');
+        for (var i = 0; i < array.length; i++) {
+            if (currentState[pitchTrack][i]) {
+                $(array[i]).addClass('active');
+                console.log('active');
+            } else {
+                $(array[i]).removeClass('active');
+                console.log('remove active');
+            }
+        }
+    }
+
+    function saveState() {
+        for (var i = 0; i < pitches.length; i++) {
+            savePitchTrack(pitches[i]);
+        }
+        console.log(currentState);
+        return JSON.stringify(currentState);
+    }
 
 
+    function loadState(pattern) {
+        // for pattern
+        if (pattern) {
+            currentState = JSON.parse(pattern)
+        }
+        for (var i = 0; i < pitches.length; i++) {
+            loadPitch(pitches[i]);
+        }
+    }
 
+// SoundCloud API Authentication
 
+// SC.initialize({
+//   client_id: '384341a25ad74d5323ef65c04636690f',
+//   redirect_uri:
+// });
 
 
 
