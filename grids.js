@@ -81,28 +81,27 @@ $(document).ready(function() {
 
 
     $(".pitch1").click(function() {
-      console.log('hi');
       this.style.backgroundColor = '#b23232'
-      sounds.sound0.play();
+
     });
 
     $(".pitch2").click(function() {
       this.style.backgroundColor = '#ff6c6c'
-      sounds.sound1.play();
+
     });
 
     $(".pitch3").click(function() {
       this.style.backgroundColor = '#fff748'
-      sounds.sound2.play();
+
     });
 
     $(".pitch4").click(function() {
       this.style.backgroundColor = '#39cc4b'
-      sounds.sound3.play();
+
     });
     $(".pitch5").click(function() {
       this.style.backgroundColor = '#3248b2'
-      sounds.sound4.play();
+
     });
 
     // add event handlers for buttons here, to experiment with adding/removing
@@ -111,63 +110,19 @@ $(document).ready(function() {
     $('#play').click(function(){
       startPlay()
 
-      // $('.square.column_1.pitch5').addClass('active')
-      // $('.square.column_1.pitch1').addClass('active')
-      // if($('.square.column_1.pitch5').hasClass('active')){
-      //   $('.square.column_1.pitch5').css('background-color', 'pink')
-      //   sounds.sound4.play()
-      // } if($('.square.column_1.pitch1').hasClass('active')){
-      //   $('.square.column_1.pitch1').css('background-color', 'pink')
-      //   sounds.sound0.play()
-      //   $(col12).removeClass('active')
-      //   if(!$(col12).hasClass('active')){
-      //       $(col12).css('background-color', 'white')
-      //   }
 
-
-      // $(col1).addClass('active')
-      // if($(col1).hasClass('active')){
-      //   $(col1).css('background-color', 'pink')
-      // }
-      // $(col12).addClass('active')
-      // if($(col12).hasClass('active')){
-      //   $(col12).css('background-color', 'blue')
-        // sounds.sound0.play()
-        // sounds.sound4.play()
-      // }
       console.log(col1);
       console.log(col12);
     })
 
     $('#stop').click(function(){
       stopPlay()
-      // $(col1).removeClass('active')
-      // if(!$(col1).hasClass('active')){
-      //     $(col1).css('background-color', 'white')
-      // }
-      // $('.square.column_12.pitch4').addClass('active')
-      // $('.square.column_12.pitch3').addClass('active')
-      // $('.square.column_12.pitch2').addClass('active')
-      // if($('.square.column_12.pitch4').hasClass('active')){
-      //   // $(col12).css('background-color', 'blue')
-      //   $('.square.column_12.pitch4').css('background-color', 'blue')
-      //   sounds.sound3.play()
-      // } if($('.square.column_12.pitch3').hasClass('active')){
-      //   $('.square.column_12.pitch3').css('background-color', 'blue')
-      //   sounds.sound2.play()
-      // } if($('.square.column_12.pitch2').hasClass('active')) {
-      //     $('.square.column_12.pitch2').css('background-color', 'blue')
-      //     sounds.sound1.play()
-      // }
-      // $('.square.column_12.pitch4').addClass('active')
-        // sounds.sound1.play()
-        // sounds.sound2.play()
-        // sounds.sound3.play()
+
       })
       console.log(col1);
       console.log(col12);
 
-    // })
+
 
 
 
@@ -182,20 +137,7 @@ $(document).ready(function() {
     gain.connect(context.destination);
 
 
-    // // context.number
-    //
-    //
-    // function playSound(sample){
-    //   sound0 = sample[0]
-    //   sound1 = sample[1]
-    //   sound2 = sample[2]
-    //   sound3 = sample[3]
-    //   sound4 = sample[4]
-    //   sounds[sample[i]].play();
-    // }
-    //
-    //
-    //
+
     function startPlay() {
         playIndex = 0;
         noteTime = 0.0;
@@ -204,9 +146,7 @@ $(document).ready(function() {
         schedule();
 
     }
-    //
-    // startPlay()
-    //
+
     function stopPlay(event) {
         cancelAnimationFrame(timeoutId);
         $(".square").removeClass("playing");
@@ -266,12 +206,14 @@ $(document).ready(function() {
     }
 
 
-    function reset(){
-       $('.square').removeClass('active');
-     }
+    // function reset(){
+    //   //  $('.square').removeClass('active');
+    //    location.reload;
+    //  }
 
      $('#reset').click(function(){
-       reset();
+       location.reload();
+      //  reset();
      });
 
      var squares = document.getElementsByClassName('square');

@@ -19,11 +19,9 @@ body {
     font-size: 16px;
     border-radius: 5px;
 }
-
 div #play-stop {
-  display: inline-block;
+    display: inline-block;
 }
-
 div {
     align-items: center;
 }
@@ -55,28 +53,39 @@ h4 {
     opacity: 0.75;
     margin-bottom: -4px;
     margin-left: -3px;
-    border-radius: 4px;
+    border-radius: 50%;
 }
-.rainbow {}
 .container {
     margin-top: 2em;
     border-collapse: collapse;
     text-align: center;
+
+
 }
 #play {
     height: auto;
     font-size: 2em;
     color: white;
     opacity: 0.75;
+    margin-right: 3em;
 }
-
 #stop {
-  height: auto;
-  font-size: 2em;
-  color: white;
-  opacity: 0.75;
+    height: auto;
+    font-size: 2em;
+    color: white;
+    opacity: 0.75;
+    margin-right: 3em;
+}
+#reset {
+    height: auto;
+    font-size: 2em;
+    color: white;
+    opacity: 0.75;
+}
+.playing {
+    background-color: lightblue;
 }
 
-.playing {
-  background-color: orange;
+div .row .buttons {
+  display: inline-flex;
 }
