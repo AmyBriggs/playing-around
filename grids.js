@@ -12,16 +12,8 @@ $(document).ready(function() {
     var noteTime
     var loop_length = 12
     console.log(loop_length);
-    var pitch5
-    var pitch4
-    var pitch3
-    var pitch2
-    var pitch1
-    var sound0
-    var sound1
-    var sound2
-    var sound3
-    var sound4
+
+
 
     var lastDrawTime
     var aheadTime = 0.200
@@ -33,7 +25,7 @@ $(document).ready(function() {
     var SCConnected = false
 
     var context
-    var pitches = [pitch1, pitch2, pitch3, pitch4, pitch5]
+
     var sample = [sound0, sound1, sound2, sound3, sound4]
     var currentState = {}
 
@@ -76,6 +68,19 @@ $(document).ready(function() {
             urls: ['acoustic_grand_piano-mp3/D5.mp3']
         }),
     }
+
+    var sound0 = sounds.sound0
+    var sound1 = sounds.sound1
+    var sound2 = sounds.sound2
+    var sound3 = sounds.sound3
+    var sound4 = sounds.sound4
+
+    var pitch5 = sound4
+    var pitch4 = sound3
+    var pitch3 = sound2
+    var pitch2 = sound1
+    var pitch1 = sound0
+    var pitches = [pitch1, pitch2, pitch3, pitch4, pitch5]
 
     // Experimenting with click listeners on squares
 
@@ -241,33 +246,30 @@ $(document).ready(function() {
     }
 
     if (localStorageSupported('localStorage')) {
-      console.log('yes');
+        console.log('yes');
         // Yippee! We can use localStorage awesomeness
     } else {
-      console.log('no');
+        console.log('no');
         // Too bad, no localStorage for us
     }
 
 
-    function savePitchTrack(pitchTrack) {
-        if (!currentState[pitchTrack]) {
+    function savePattern(pitches) {
+        if (!currentState[pitches]) {
             console.log('adding value');
-            currentState[pitchTrack] = [];
+            currentState[pitches] = [];
         }
-        var array = $('#' + pitchTrack).children('.square');
+        var array = $('#' + pitches).children('.square');
         for (var i = 0; i < array.length; i++) {
-            currentState[name][i] = $(array[i]).hasClass('active');
+            currentState[pitches][i] = $(array[i]).hasClass('active');
         }
-
     }
 
-
-
-    function loadPitch(pitchTrack) {
-        if (!currentState[pitchTrack]) return;
-        var array = $('#' + pitchTrack).children('.square');
+    function loadPattern(pitches) {
+        if (!currentState[pitches]) return;
+        var array = $('#' + pitches).children('.square');
         for (var i = 0; i < array.length; i++) {
-            if (currentState[pitchTrack][i]) {
+            if (currentState[pitches][i]) {
                 $(array[i]).addClass('active');
                 console.log('active');
             } else {
@@ -277,9 +279,11 @@ $(document).ready(function() {
         }
     }
 
+console.log(pitches);
+
     function saveState() {
         for (var i = 0; i < pitches.length; i++) {
-            savePitchTrack(pitches[i]);
+            savePattern(pitches[i]);
         }
         console.log(currentState);
         return JSON.stringify(currentState);
@@ -292,16 +296,18 @@ $(document).ready(function() {
             currentState = JSON.parse(pattern)
         }
         for (var i = 0; i < pitches.length; i++) {
-            loadPitch(pitches[i]);
+            loadPattern(pitches[i]);
         }
     }
 
-// SoundCloud API Authentication
 
-// SC.initialize({
-//   client_id: '384341a25ad74d5323ef65c04636690f',
-//   redirect_uri:
-// });
+
+    // SoundCloud API Authentication
+
+    // SC.initialize({
+    //   client_id: '384341a25ad74d5323ef65c04636690f',
+    //   redirect_uri:
+    // });
 
 
 

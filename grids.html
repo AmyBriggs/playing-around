@@ -14,11 +14,12 @@
 
 <body>
     <div class="row">
-        <div class="col s12" id="header">
+        <div class="col l12" id="header">
             <h1 id="header-main">sixty</h1>
             <h2 id="header-sub">a simple sequencer</h2>
             <h4 id="header-last">(after steve reich's <em>piano phase</em>)</h4>
         </div>
+
     </div>
 
     <div class="row">
@@ -35,7 +36,7 @@
         </div>
 
         <div class="col l6">
-            <div class="row">
+            <div id="pitch5" class="row">
                 <div class="square column_0 pitch5"></div>
                 <div class="square column_1 pitch5"></div>
                 <div class="square column_2 pitch5"></div>
@@ -50,7 +51,7 @@
                 <div class="square column_11 pitch5"></div>
             </div>
 
-            <div class="row">
+            <div id="pitch4" class="row">
                 <div class="square column_0 pitch4"></div>
                 <div class="square column_1 pitch4"></div>
                 <div class="square column_2 pitch4"></div>
@@ -65,7 +66,7 @@
                 <div class="square column_11 pitch4"></div>
             </div>
 
-            <div class="row">
+            <div id="pitch3" class="row">
                 <div class="square column_0 pitch3"></div>
                 <div class="square column_1 pitch3"></div>
                 <div class="square column_2 pitch3"></div>
@@ -80,7 +81,7 @@
                 <div class="square column_11 pitch3"></div>
             </div>
 
-            <div class="row">
+            <div id="pitch2" class="row">
                 <div class="square column_0 pitch2"></div>
                 <div class="square column_1 pitch2"></div>
                 <div class="square column_2 pitch2"></div>
@@ -95,7 +96,7 @@
                 <div class="square column_11 pitch2"></div>
             </div>
 
-            <div class="row">
+            <div id="pitch1" class="row">
                 <div class="square column_0 pitch1"></div>
                 <div class="square column_1 pitch1"></div>
                 <div class="square column_2 pitch1"></div>
@@ -112,10 +113,65 @@
         </div>
 
         <div class="col l3">
+            <div id="savePanel" class="right-panel">
+                <div class="right-panel-1">
+                    <div class="savePattern" id="savePattern1">Save</div>
+                </div>
+            </div>
+
+            <div id="loadPanel" class="right-panel">
+                <div class="right-panel-1">
+                    <div class="loadPattern" id="loadPattern1">Load</div>
+                </div>
+            </div>
+
+            <div id="recordPanel" class="right-panel">
+                <div class="right-panel-1">
+                    <div class="recordPattern" id="recordStart">Record</div>
+                    <div class="recordPattern" id="recordStop">Stop</div>
+                    <div class="recordPattern" id="recordDisplay">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="recordStop">
+                <div class="recordStop1">
+                    <div id="save" class="selectedPanel">Save</div>
+                    <div id="load" class="deselectedPanel">Load</div>
+                    <div id="record" class="deselectedPanel">Record</div>
+                </div>
+                
+            </div>
+
 
         </div>
 
+        <!-- Right side panel to hold recording stuff and SoundCloud authentication -->
+
     </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col l12" id="soundcloud">
+            <div id="states" class="unprocessed">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <iframe id="soundcloud" width="100%" height="100%" scrolling="no" frameborder="no" src=""></iframe>
+        </div>
+
+    </div>
+
+
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
