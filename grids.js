@@ -279,7 +279,7 @@ $(document).ready(function() {
         }
     }
 
-console.log(pitches);
+    console.log(pitches);
 
     function saveState() {
         for (var i = 0; i < pitches.length; i++) {
@@ -299,6 +299,74 @@ console.log(pitches);
             loadPattern(pitches[i]);
         }
     }
+
+
+    ///////////Event listeners for record buttons//////////////////////
+
+    $('#save').click(function() {
+        // $('#savePanel').show();
+        $('#save').addClass('selectedPanel');
+        $('#save').removeClass('deselectedPanel');
+        // $('#loadPanel').hide();
+        $('#load').addClass('deselectedPanel');
+        $('#load').removeClass('selectedPanel');
+        // $('#recordPanel').hide();
+        $('#record').addClass('deselectedPanel');
+        $('#record').removeClass('selectedPanel');
+        console.log('save');
+
+    });
+
+    $('#load').click(function() {
+        // $('#savePanel').hide();
+        $('#save').addClass('deselectedPanel');
+        $('#save').removeClass('selectedPanel');
+        // $('#loadPanel').show();
+        $('#load').addClass('selectedPanel');
+        $('#load').removeClass('deselectedPanel');
+        // $('#recordPanel').hide();
+        $('#record').addClass('deselectedPanel');
+        $('#record').removeClass('selectedPanel');
+        console.log('load');
+
+    });
+
+
+    $('#record').click(function() {
+        // $('#savePanel').hide();
+        $('#save').addClass('deselectedPanel');
+        $('#save').removeClass('selectedPanel');
+        // $('#loadPanel').hide();
+        $('#load').addClass('deselectedPanel');
+        $('#load').removeClass('selectedPanel');
+        // $('#recordPanel').show();
+        $('#record').addClass('selectedPanel');
+        $('#record').removeClass('deselectedPanel');
+        console.log('record');
+    })
+
+    $('#savePattern1').click(function() {
+        localStorage.setItem('pattern1', saveState());
+    });
+
+    $('#loadPattern1').click(function() {
+        loadState(localStorage.pattern1);
+    });
+
+
+
+    $('#recordStart').click(function(){
+        if (!SCConnected) {
+            SC.connect().then(function() {
+                return SC.get('/me');
+            }).then(function(user) {
+                SCConnected = true;
+            })
+        }
+    });
+
+
+
 
 
 

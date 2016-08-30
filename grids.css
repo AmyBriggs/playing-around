@@ -166,10 +166,27 @@ h4 {
 #recordStop {
   background-color: lightblue;
   color: white;
+
   font-family: 'Lato', sans-serif;
   font-size: 12px;
   width: 100px;
   text-align: center;
   align-items: center;
+  margin-bottom: 25px;
+}
 
+#recordPlayStop {
+  border: 1px solid white;
+  background-color: lightblue;
+  border-radius: 5px;
+  font-family:'Lato', sans-serif;
+  color: dodgerblue;
+}
+
+#save {
+  margin-bottom: 2px;
+}
+
+#load {
+  margin-bottom: 2px;
 }
