@@ -2,6 +2,7 @@ $(document).ready(function() {
     'use strict'
     console.log("DOM fully loaded and parsed,grids is connected");
     console.log('grids is connected');
+    $('.modal-trigger').leanModal();
 
 
     // Define some of the variables used in functions
