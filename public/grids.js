@@ -152,23 +152,23 @@ $(document).ready(function() {
             var contextPlayTime = noteTime + startTime;
             var $currentSquares = $(".column_" + playIndex);
             $currentSquares.each(function() {
-                    if ($(this).hasClass("active") && $(this).hasClass("pitch1")) {
-                        sounds.sound0.play();
-                    }
-                    if ($(this).hasClass("active") && $(this).hasClass("pitch2")) {
-                        sounds.sound1.play();
-                    }
-                    if ($(this).hasClass("active") && $(this).hasClass("pitch3")) {
-                        sounds.sound2.play();
-                    }
-                    if ($(this).hasClass("active") && $(this).hasClass("pitch4")) {
-                        sounds.sound3.play();
-                    }
-                    if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
-                        sounds.sound4.play();
-                    }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch1")) {
+                    sounds.sound0.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch2")) {
+                    sounds.sound1.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch3")) {
+                    sounds.sound2.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch4")) {
+                    sounds.sound3.play();
+                }
+                if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
+                    sounds.sound4.play();
+                }
 
-                })
+            })
 
             drawPlayhead(playIndex);
 
