@@ -8,7 +8,7 @@ SC.initialize({
 });
 
 console.log('this is awesome')
-);
+// );
 //
 //
 // // SoundCloud Recorder
