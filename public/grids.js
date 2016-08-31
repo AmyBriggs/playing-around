@@ -476,7 +476,7 @@ $('#loadPattern1').click(function() {
 // // var SC = require('soundcloud');
 SC.initialize({
     client_id: '384341a25ad74d5323ef65c04636690f',
-    redirect_uri: 'https://amybriggssixty.firebaseapp.com'
+    redirect_uri: 'https://amybriggssixty.firebaseapp.com/callback.html'
 });
 
 console.log('this is awesome');
