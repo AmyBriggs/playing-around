@@ -497,6 +497,7 @@ $(document).ready(function() {
         var theBlob = recorder.getWAV();
         recorder.saveAs('soundfile');
         console.log(recorder.getWAV());
+
         // recorder.getWAV().then(function(blob) {
             // $('#states').show();
             // $('#soundcloud').hide();
@@ -510,9 +511,14 @@ $(document).ready(function() {
             //     }
     });
 
-    $('#load').click(function() {})
+    // $('#load').click(function() {
+    //   recorder.play(theBlob)
+    // });
         // }, 5000);
         // });
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// SOUNDCLOUD RECORD, STOP, SHOW FUNCTIONS
 
     // if (!SCConnected) {
     //   console.log('gee whiz');
