@@ -1,6 +1,6 @@
 $(document).ready(function() {
     'use strict'
-$('.modal-trigger').leanModal();
+    $('.modal-trigger').leanModal();
 
 
     // Declare variables used in functions
