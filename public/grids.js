@@ -96,7 +96,6 @@ $(document).ready(function() {
         playIndex = 0;
         noteTime = 0.0;
         startTime = context.currentTime + aheadTime;
-        // startTime = context.currentTime;
         schedule();
     }
 
