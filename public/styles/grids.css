@@ -130,14 +130,14 @@ header {
   color: white;
   margin-right: 1px;
   margin-left: 2px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 #piano {
   font-size: 2em;
   opacity: .60;
   color: white;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-right: 5px;
 }
 
@@ -154,5 +154,31 @@ footer {
 
 }
 #about {
+  font-size: 2em;
+  opacity: .60;
+  color: white;
+  margin-top: 10px;
+  margin-right: 83%;
+}
 
+.modal-content {
+  font-family: 'Lato', sans-serif;
+  background-color: lightblue;
+
+}
+
+.description {
+  color: #0A1161;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+p {
+  color: #0A1161;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+#modal1 {
+  border-radius: 10px;
 }
