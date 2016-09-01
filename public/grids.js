@@ -89,7 +89,6 @@ $('.modal-trigger').leanModal();
     // Setting up the AudioContext
 
     context = new AudioContext();
-    console.log(context.currentTime);
     gain = context.createGain();
     gain.connect(context.destination);
 
@@ -99,7 +98,6 @@ $('.modal-trigger').leanModal();
         startTime = context.currentTime + aheadTime;
         // startTime = context.currentTime;
         schedule();
-
     }
 
     function stopPlay(event) {
@@ -129,7 +127,6 @@ $('.modal-trigger').leanModal();
                 if ($(this).hasClass("active") && $(this).hasClass("pitch5")) {
                     sounds.sound4.play();
                 }
-
             })
 
             drawPlayhead(playIndex);
@@ -156,7 +153,6 @@ $('.modal-trigger').leanModal();
         }
 
         noteTime += 0.25 * secondsPerBeat
-        console.log(secondsPerBeat);
     }
 
 
@@ -171,7 +167,6 @@ $('.modal-trigger').leanModal();
 
     for (var i = 0; i < squares.length; i++) {
         squares[i].addEventListener('click', function(event) {
-            // console.log(event.target);
             if (this.classList.contains('active')) {
                 this.classList.remove('active');
                 this.style.backgroundColor = 'white';
@@ -194,12 +189,8 @@ $('.modal-trigger').leanModal();
 
     if (localStorageSupported('localStorage')) {
         console.log('yes');
-        // Yippee! We can use localStorage awesomeness
     } else {
         console.log('no');
-        // Too bad, no localStorage for us
     }
 
 });
-
-// });
