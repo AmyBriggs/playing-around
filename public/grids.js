@@ -1,56 +1,23 @@
 $(document).ready(function() {
     'use strict'
-    console.log("DOM fully loaded and parsed,grids is connected");
-    console.log('grids is connected');
-    $('.modal-trigger').leanModal();
+$('.modal-trigger').leanModal();
 
 
-    // Define some of the variables used in functions
+    // Declare variables used in functions
 
     var bpm = 60
-    var volume
     var playIndex
     var startTime
     var noteTime
     var loop_length = 12
-    console.log(loop_length);
-
-
-
     var lastDrawTime
     var aheadTime = 0.200
-
-    var rec
     var gain
     var timeoutId
-
     var SCConnected = false
-
     var context
-    var recorder
-
-    var sample = [sound0, sound1, sound2, sound3, sound4]
     var currentState = {}
 
-
-
-
-    // Define the 12 columns here
-
-    var col1 = $('div.square.column_1')
-    var col2 = $('div.square.column_2')
-    var col3 = $('div.square.column_3')
-    var col4 = $('div.square.column_4')
-    var col5 = $('div.square.column_5')
-    var col6 = $('div.square.column_6')
-    var col7 = $('div.square.column_7')
-    var col8 = $('div.square.column_8')
-    var col9 = $('div.square.column_9')
-    var col10 = $('div.square.column_10')
-    var col11 = $('div.square.column_11')
-    var col12 = $('div.square.column_12')
-
-    var cols = [col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12]
 
     // Define the sounds object here
 
@@ -90,39 +57,33 @@ $(document).ready(function() {
 
     $(".pitch1").click(function() {
         this.style.backgroundColor = '#000099'
-
     });
 
     $(".pitch2").click(function() {
         this.style.backgroundColor = '#005ce6'
-
     });
 
     $(".pitch3").click(function() {
         this.style.backgroundColor = '#bf00ff'
-
     });
 
     $(".pitch4").click(function() {
         this.style.backgroundColor = '#d580ff'
-
     });
+
     $(".pitch5").click(function() {
         this.style.backgroundColor = '#4dffd2'
-
     });
 
-    // add event handlers for buttons here, to experiment with adding/removing
+    // add event handlers for adding/removing
     // 'active' or 'playing' classes to the grid/columns
 
     $('#play').click(function() {
         startPlay()
-
     })
 
     $('#stop').click(function() {
         stopPlay()
-
     })
 
     // Setting up the AudioContext
