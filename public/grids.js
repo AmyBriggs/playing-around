@@ -173,23 +173,8 @@ $(document).ready(function() {
                 this.classList.add('active')
             }
         })
-    };
-
-
-    //  Make event listeners for local storage
-
-    function localStorageSupported() {
-        try {
-            return "localStorage" in window && window["localStorage"] !== null;
-        } catch (e) {
-            return false;
-        }
     }
 
-    if (localStorageSupported('localStorage')) {
-        console.log('yes');
-    } else {
-        console.log('no');
-    }
+
 
 });
